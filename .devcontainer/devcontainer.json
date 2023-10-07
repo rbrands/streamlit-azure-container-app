@@ -13,7 +13,9 @@
           "ms-python.vscode-pylance",
           "ms-vscode.azure-account",
           "ms-vscode.azurecli",
-          "ms-azuretools.azure-dev"
+          "ms-azuretools.azure-dev",
+          "ms-azuretools.vscode-azurefunctions",
+          "ms-dotnettools.csharp"
         ]
       },
       "updateContentCommand": "[ -f packages.txt ] && sudo apt update && sudo apt upgrade && sudo xargs apt install -y <packages.txt; pip3 install --user -r src/Frontend/requirements.txt",
