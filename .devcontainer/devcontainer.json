@@ -1,0 +1,33 @@
+{
+    "name": "Azure Container App",
+    "image":"mcr.microsoft.com/devcontainers/universal:2",
+    "codespaces": {
+        "openFiles": [
+          "README.md"
+        ]
+      },
+      "vscode": {
+        "settings": {},
+        "extensions": [
+          "ms-python.python",
+          "ms-python.vscode-pylance",
+          "ms-vscode.azure-account",
+          "ms-vscode.azurecli",
+          "ms-azuretools.azure-dev"
+        ]
+      },
+      "updateContentCommand": "[ -f packages.txt ] && sudo apt update && sudo apt upgrade && sudo xargs apt install -y <packages.txt; pip3 install --user -r src/Frontend/requirements.txt",
+      "postAttachCommand": {
+        "server": "streamlit run src/Frontend/Start.py --server.enableCORS false --server.enableXsrfProtection false"
+      },
+      "portsAttributes": {
+        "8501": {
+          "label": "Application",
+          "onAutoForward": "openPreview"
+        }
+      },
+      "forwardPorts": [
+        8501
+      ]
+ 
+}
