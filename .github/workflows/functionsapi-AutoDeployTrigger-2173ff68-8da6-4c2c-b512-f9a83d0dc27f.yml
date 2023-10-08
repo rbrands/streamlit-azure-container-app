@@ -1,0 +1,42 @@
+name: Trigger auto deployment for functionsapi
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ main ]
+    paths:
+    - 'src/FunctionsApi/**'
+    - '.github/workflows/functionsapi-AutoDeployTrigger-2173ff68-8da6-4c2c-b512-f9a83d0dc27f.yml'
+
+  # Allow manual trigger 
+  workflow_dispatch:
+      
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.FUNCTIONSAPI_AZURE_CREDENTIALS }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          appSourcePath: ${{ github.workspace }}/src/FunctionsApi 
+          registryUrl: rbrandscontainerregistry.azurecr.io
+          registryUsername: ${{ secrets.FUNCTIONSAPI_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.FUNCTIONSAPI_REGISTRY_PASSWORD }}
+          containerAppName: functionsapi
+          resourceGroup: PD-CONTAINER-APP-EXAMPLE
+          imageToBuild: rbrandscontainerregistry.azurecr.io/functionsapi:${{ github.sha }}
+          dockerfilePath: Dockerfile
+
+     
+
