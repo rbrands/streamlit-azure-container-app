@@ -40,6 +40,9 @@ https://code.visualstudio.com/docs/containers/quickstart-python explains how to 
 
 The Streamlit App is listening on port 8501 (that's the default). Set Target Port in Ingress to 8501.
 
+    docker build -t frontend .
+    docker run -p 8501:8501 frontend
+
 
 #### Functions APi
 
@@ -47,7 +50,15 @@ See https://learn.microsoft.com/en-us/azure/azure-functions/functions-how-to-cus
 In directory ./src/FunctionsApi call
 
     func init --docker-only
+    docker build --tag functionsapi .
+    docker run -p 8080:80 -it functionsapi
+
 #### Azure Container Registry
+
+Login to Azure:
+
+    az login
+    az account set -s <subscriptionid>
 
 Publish the two docker images to Azure Container Registry:
 
@@ -55,5 +66,6 @@ Publish the two docker images to Azure Container Registry:
     az acr build --registry <REGISTRY_NAME> --image frontend .
     cd ./src/FunctionsApi
     az acr build --registry <REGISTRY_NAME> --image functionsapi .
+
 
 
