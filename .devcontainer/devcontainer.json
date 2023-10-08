@@ -23,7 +23,8 @@
           "ms-vscode.azurecli",
           "ms-azuretools.azure-dev",
           "ms-azuretools.vscode-azurefunctions",
-          "ms-dotnettools.csharp"
+          "ms-dotnettools.csharp",
+          "github.vscode-github-actions"
         ]
       },
 

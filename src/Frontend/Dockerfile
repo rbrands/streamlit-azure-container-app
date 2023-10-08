@@ -1,4 +1,5 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
+# For Streamlit see https://docs.streamlit.io/knowledge-base/tutorials/deploy/docker
 FROM python:3.11-slim
 
 EXPOSE 5000
