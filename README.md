@@ -17,5 +17,6 @@ Split the Terminal window, go to the Frontend directory and start Streamlit
 
     streamlit run Start.py
 
+## Creating the containers
 
-
+https://code.visualstudio.com/docs/containers/quickstart-python explains how to build a docker container for a python project. See Dockerfile in folder "Frontend" for the details.
