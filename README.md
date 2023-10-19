@@ -1,7 +1,7 @@
 # Streamlit Azure Container App
 Example for Python Streamlit app with Azure Function backend deployed as Azure Container App
 
-## Developing in codespaces
+## Developing in GitHub Codespaces
 
 Install the Functions Core tooling with the following command in the Terminal window:
 
@@ -67,5 +67,6 @@ Publish the two docker images to Azure Container Registry:
     cd ./src/FunctionsApi
     az acr build --registry <REGISTRY_NAME> --image functionsapi .
 
+### Azure Developer CLI
 
-
+See https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/make-azd-compatible how to make the project AZD compatible and deploying all resources from source. azd init was called of the existing project, see [Next Steps](next-steps.md) for details of created files.
